@@ -7,7 +7,14 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      props: { lang: "en" }
+    },
+    {
+      path: '/th/',
+      name: 'homeTH',
+      component: HomeView,
+      props: { lang: "th" }
     },
   ]
 })
