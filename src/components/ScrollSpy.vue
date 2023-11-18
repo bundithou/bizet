@@ -8,7 +8,7 @@
       </div>
 
       <div id="second">
-        <Feature />
+        <WhyUs />
       </div>
 
       <div id="third">
@@ -16,7 +16,7 @@
       </div>
 
       <div id="fourth">
-        <ContactUs />
+        <!-- <ContactUs /> -->
       </div>
 
       <div id="fifth">
@@ -31,14 +31,10 @@
 // components
 import Header from '@/components/Header.vue'
 import Cover from '@/components/Cover.vue'
-import Feature from '@/components/Feature.vue'
+import WhyUs from '@/components/WhyUs.vue'
 import Services from '@/components/Services.vue'
 import faq from '@/components/faq.vue'
-import ContactUs from '@/components/ContactUs.vue'
-
-// contents
-import th from '@/assets/locales/th.json'
-import en from '@/assets/locales/en.json'
+// import ContactUs from '@/components/ContactUs.vue'
 
 // property
 const props = defineProps({
@@ -46,11 +42,21 @@ const props = defineProps({
 })
 
 // cover page text setup
-const msg = props.lang === "th" ? th : en
+import content from '@/assets/text/Cover.json'
 const coverProps = {
-  announcement: msg.announcement,
-  title: msg.title,
-  description: msg.description.join("\n"),
-  schedule: msg.schedule
+  announcement: content[props.lang].announcement,
+  title: content[props.lang].title,
+  description: content[props.lang].description.join("\n"),
+  schedule: content[props.lang].schedule
 }
+
+// whyus page text setup
+// import content from '@/assets/text/Cover.json'
+// const coverProps = {
+//   announcement: content[props.lang].announcement,
+//   title: content[props.lang].title,
+//   description: content[props.lang].description.join("\n"),
+//   schedule: content[props.lang].schedule
+// }
+
 </script>
