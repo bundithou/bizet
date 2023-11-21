@@ -1,14 +1,10 @@
 <template>
   <main>
-    <ScrollSpy v-bind="props"/>
+    <ScrollSpy />
   </main>
 </template>
 
 <script setup>
 // Components
-import ScrollSpy from '../components/ScrollSpy.vue';
-
-const props = defineProps({
-  lang: String
-})
+import ScrollSpy from '@/components/ScrollSpy.vue';
 </script>

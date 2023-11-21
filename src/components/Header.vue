@@ -17,8 +17,9 @@
             <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#third">Services</a>
             <!-- <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#fourth">FAQ</a> -->
             <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="#fourth">Contact us</a>
-            <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="/" v-show="currentLang === 'th'">en</a>
-            <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400" href="/bizet/th" v-show="currentLang === 'en'">th</a>
+            <a class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500" @click="switchLang" href="#">
+                {{ lang }}
+            </a>
           </div>
         </div>
       </nav>
@@ -26,8 +27,16 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  lang: String
-})
-const currentLang = props.lang === "th" ? "th" : "en"
+import { useLangStore } from '@/stores/langSwitcher.js'
+const { getLang, switchLang } = useLangStore()
+</script>
+
+<script>
+import { mapState } from 'pinia'
+
+export default {
+  computed: {
+    ...mapState(useLangStore, {lang: 'getLang'}),
+  },
+}
 </script>
